@@ -18,3 +18,9 @@ Then Run:
 ```pip install PyAudio```
 
 For more information on setup you can visit SpeechRecognition's github [here](https://github.com/Uberi/speech_recognition?undefined)
+
+## Wiring
+
+PIN 17 is configured as the input pin for the button used for audio recording
+
+PIN 22 is confgured as the PWM pin for driving the mosfet controllers of our motors
