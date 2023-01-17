@@ -21,6 +21,14 @@ For more information on setup you can visit SpeechRecognition's github [here](ht
 
 ## Wiring
 
-PIN 17 is configured as the input pin for the button used for audio recording
+PIN 17 is configured as the input pin for the button used for audio recording. Yellow - Yellow cable
 
-PIN 22 is confgured as the PWM pin for driving the mosfet controllers of our motors
+PIN 22 is confgured as the PWM pin for driving the mosfet controllers of our motors. Green - Yellow cable
+
+PIN 1 is 3.3v DC. Blue - green cable
+
+PIN 26 is ground. White - Brown cable
+
+If the motors are wired forward, the output is on the left side of the pump.
+
+

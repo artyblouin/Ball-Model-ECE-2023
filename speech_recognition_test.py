@@ -1,5 +1,5 @@
 import speech_recognition as sr
-from gpiozero import Button, PWMOutputDevice
+from gpiozero import Button, PWMOutputDevice, LED
 import time
 
 def recognize_from_mic(mic, recognizer):
@@ -32,7 +32,8 @@ def check_speech_and_dispense(mic, recognizer, keyphrase):
 if __name__ == '__main__':
     # phrase that needs to be heard in order to dispense a drink
     keyphrase = 'drink please'
-    microphone_name = 'Blue Snowball: USB Audio (hw:1,0)'
+    microphone_name = 'USB Audio Device: - (hw:1,0)'
+    pour_duration = 25
 
     # GIO Configuration
     RECORD_BUTTON_PIN = 17
@@ -42,6 +43,8 @@ if __name__ == '__main__':
     button = Button(RECORD_BUTTON_PIN)
     motor_pwm = PWMOutputDevice(MOTOR_PWM_PIN, frequency=1000, initial_value=1)
 
+    print(sr.Microphone.list_microphone_names())
+
     # initialize speech recognizer and microphone instances
     recognizer = sr.Recognizer()
     mic = sr.Microphone(device_index = sr.Microphone.list_microphone_names().index(microphone_name))    
@@ -50,6 +53,6 @@ if __name__ == '__main__':
         if not button.is_pressed:
             if check_speech_and_dispense(mic, recognizer, keyphrase):
                 motor_pwm.value = 0
-                time.sleep(10)
+                time.sleep(pour_duration)
                 motor_pwm.value = 1
 
